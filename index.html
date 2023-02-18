@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>PPI RSPA</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <style>
+    </style>
+</head>
+
+<body onload="onload(); editHHBtn.click()">
+    <!-- ------- Edit HH ------- -->
+    <button type="button" id="editHHBtn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editHH">
+        Launch demo modal
+    </button>
+    <div class="modal fade" id="editHH" tabindex="-1" aria-labelledby="editHHLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-title fs-6" id="editHHLabel">
+                        <div>
+                            <h5 class="fw-bold">EDIT: Data Penilaian Handhygiene</h5>
+                        </div>
+                        <table class="table small table-borderless table-sm mb-0">
+                            <tbody>
+                                <tr class="small">
+                                    <th style="width: 75px">Id</th>
+                                    <td>: <span>1231</span></td>
+                                </tr>
+                                <tr class="small">
+                                    <th>Observer</th>
+                                    <td>: <span>Mark</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <!-- <table class="table small table-borderless table-sm">
+                        
+                    </table> -->
+                </div>
+                <div class="modal-body">
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <th scope="row">Nama</th>
+                                <td>
+                                    <!-- <input type="text"
+                                        class="form-control border-outline-ijo hh-input input-with-list onchange-check shadow-ijo-focus"
+                                        list-name="hh-edit-list-nama" placeholder="Masukkan nama obyek"
+                                        aria-label="Nama Obyek Penilaian" aria-describedby="pra-input-1"
+                                        id="hh-edit-nama" autocomplete="off" value="">
+                                    <div class="col w-100 position-relative mb-0">
+                                        <div id="hh-edit-list-nama" class="input-list" list-data-to-filter="unitData"
+                                            elemID-to-paste="hh-edit-nama" tambah-list-function="TambahUnit()">
+                                        </div>
+                                    </div> -->
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Kelompok</th>
+                                <td>
+                                    <select class="form-select filter-hh-option shadow-ijo-focus border-outline-ijo"
+                                        id="filter-hh-option-kelompok" onchange="hhTableGroupShow(0); HHFilterSort()"
+                                        filter-hh-type="group">
+                                        <option value="Dokter">Dokter</option>
+                                        <option value="Perawat Bidan">Perawat Bidan</option>
+                                        <option value="Magang Siswa">Magang Siswa</option>
+                                        <option value="Lain-lain">Lain-lain</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Unit</th>
+                                <td>
+                                    <input type="text"
+                                        class="form-control border-outline-ijo hh-input input-with-list onchange-check shadow-ijo-focus"
+                                        list-name="hh-edot-list-unit" placeholder="Masukkan nama unit"
+                                        aria-label="Nama Unit Penilaian" aria-describedby="pra-input-1"
+                                        id="hh-edit-unit" autocomplete="off" value="">
+                                    <div class="col w-100 position-relative mb-0">
+                                        <div id="hh-edit-list-unit" class="input-list" list-data-to-filter="unitData"
+                                            elemID-to-paste="hh-edit-unit" tambah-list-function="TambahUnit()">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th colspan="2">
+                                    <div class="input-group border-outline-ijo border-2 mb-4">
+                                        <span class="input-group-text bg-ijo border-outline-ijo"><i
+                                                class="bi bi-calendar2-month-fill"></i></span>
+                                        <select class="form-select onchange-check shadow-ijo-focus border-outline-ijo"
+                                            id="hh-edit-bulan">
+                                            <option selected>Pilih Bulan</option>
+                                            <option value="1">Januari</option>
+                                            <option value="2">Februari</option>
+                                            <option value="3">Maret</option>
+                                            <option value="4">April</option>
+                                            <option value="5">Mei</option>
+                                            <option value="6">Juni</option>
+                                            <option value="7">Juli</option>
+                                            <option value="8">Agustus</option>
+                                            <option value="9">September</option>
+                                            <option value="10">Oktober</option>
+                                            <option value="11">November</option>
+                                            <option value="12">Desember</option>
+                                        </select>
+                                        <span class="input-group-text bg-ijo border-outline-ijo"><i
+                                                class="bi bi-calendar2-date"></i></span>
+                                        <input type="number"
+                                            class="form-control onchange-check shadow-ijo-focus border-outline-ijo"
+                                            min="2023" placeholder="Tahun" id="hh-edit-tahun">
+                                    </div>
+                                </th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger" onclick="EditHH('hapus', 12)">Hapus</button>
+                    <button type="button" class="btn btn-primary" onclick="EditHH('simpan', 12)">Simpan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- -----tambah list----- -->
+    <div class="d-none" id="tambah-list-template">
+        <ul>
+            <li class="tambah-list">Tambah baru: <span>Argadia Ty</span>
+            </li>
+        </ul>
+    </div>
+    <!-- -----loader----- -->
+    <div class="loader-wrapper" id="loader">
+        <div class="d-flex align-items-center flex-column">
+            <div class="mb-3"><strong>Komite PPI RSPA</strong></div>
+            <div class="spinner-border mx-auto" role="status" aria-hidden="true"></div>
+        </div>
+    </div>
+    <!-- ----- toaster ------ -->
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+        <div id="liveToast" class="toast align-items-center shadow overflow-hidden border-danger rounded border-2"
+            role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex bg-white">
+                <div class="toast-body">
+                    Hello, world! This is a toast message.
+                </div>
+                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+    <!-- ----- background ------ -->
+    <img src="https://images.unsplash.com/photo-1572226301391-33e981a7a763?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80"
+        class="h-100 w-100 position-fixed fixed-top"
+        style="filter: brightness(113%); left: 0; object-fit: cover; z-index: -100" alt="...">
+    <div class="h-100">
+        <div class="landingpage" style="display: block;">
+            <div class="landinghero position-relative" style="height: 100vh;">
+                <div class="login-box position-absolute top-50 start-50 translate-middle" id="login-box">
+                    <form class="login-form d-flex flex-column" style="min-width: 250px;" onsubmit="return false">
+                        <div class="login-title mb-4 d-flex flex-column fw-bold text-center">
+                            <img src="https://imgbox.io/ib/S2j1Ufo1ov.png" class="img-fluid mx-auto" alt="..."
+                                style="object-fit: cover; height: 150px;">
+                            <div class="mt-2">
+                                Website PPI
+                            </div>
+                            <div class="">
+                                RSUD Pandan Arang Boyolali
+                            </div>
+                        </div>
+                        <input class="form-control mb-3 p-3 rounded border border-secondary" type="text"
+                            placeholder="Masukkan Nama Anda" id="login-nama" autocomplete="off" />
+                        <input class="form-control mb-3 p-2 rounded border border-secondary" type="password"
+                            placeholder="Password" id="login-password" style="display: none;" />
+                        <button class="btn btn-primary col" onclick="login(Elem('login-nama').value)">Masuk</button>
+                    </form>
+                </div>
+            </div>
+            <div class="landinginfo border border-info" style="height: 500px;"></div>
+        </div>
+        <div class="mainpage p-0 m-0 flex-column overflow-hidden" style="display: none; height: 100vh;">
+            <div class="navbar navbar-expand-lg p-0 m-0 " style="background: rgb(5,50,37) ;">
+                <!-- ----- trial button ----- -->
+                <button accesskey="g" class="btn position-absolute top-0 start-0 btn-danger"
+                    onclick="trial()">test</button>
+                <!-- ------------------------ -->
+                <div class="container-fluid p-0 m-0">
+                    <div id="menu-title" class=" navbar-brand bg-ijo p-2 px-3">
+                        Kepatuhan Handhygiene
+                    </div>
+                    <button class="navbar-toggler border-white me-2" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#mainpageNavbar" aria-controls="mainpageNavbar" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <i class="bi bi-list text-white"></i>
+                        <!-- <span class="navbar-toggler-icon"></span> -->
+                    </button>
+                    <div class="collapse navbar-collapse m-0" id="mainpageNavbar">
+                        <ul class="navbar-nav me-auto ps-3 mb-2 mb-lg-0 gap-2">
+                            <li class="nav-item">
+                                <a class="nav-link active" nav-group="menu-nav-btn" nav-target="menu-nav-page-hh"
+                                    onclick="NavTo(this)">Kepatuhan Handhygiene</a>
+                            </li>
+                            <li class="nav-item ppi-only" style="display: block;">
+                                <a class="nav-link" nav-group="menu-nav-btn" nav-target="menu-nav-page-apd"
+                                    onclick="NavTo(this)">Kepatuhan APD</a>
+                            </li>
+                            <li class="nav-item ppi-only" style="display: block;">
+                                <a class="nav-link" nav-group="menu-nav-btn" nav-target="menu-nav-page-spv"
+                                    onclick="NavTo(this)">Supervisi PPI</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" nav-group="menu-nav-btn" nav-target="menu-nav-page-res"
+                                    onclick="NavTo(this)">Resume</a>
+                            </li>
+                            <li class="nav-item ppi-only" style="display: block;">
+                                <a class="nav-link" nav-group="menu-nav-btn" style="display: block;"
+                                    nav-target="menu-nav-page-edit" onclick="NavTo(this)">Editor</a>
+                            </li>
+                        </ul>
+                        <div class="d-flex navbar-nav bg-danger px-2">
+                            <li class="nav-item">
+                                <a class="nav-link" onclick="login('out')">Logout</a>
+                            </li>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid p-0 flex-grow-1 overflow-y-auto" style="max-width: 100vw; scroll-snap-type: y proximity;
+            scroll-padding-top: 0;">
+                <div class="p-0 m-0 d-md-flex w-100" style="display: flex" nav-group="menu-nav-pages"
+                    id="menu-nav-page-hh">
+                    <div class="flex-shrink-0" style="scroll-snap-align: start; height: calc(100vh - 40px) ">
+                        <div class="mx-auto px-3 pb-3 d-flex flex-column" style="max-width: 350px;">
+                            <div class="text-center h6 fw-bold text-ijo my-4">Obyek Penilaian</div>
+                            <div class="col">
+                                <div class="input-group border-outline-ijo border-2">
+                                    <span class="input-group-text bg-ijo border-outline-ijo" id="pra-input-0"><i
+                                            class="bi bi-person-circle"></i></span>
+                                    <input type="text"
+                                        class="form-control border-outline-ijo border-success hh-input input-with-list onchange-check shadow-ijo-focus"
+                                        list-name="hh-input-list-nama" placeholder="Masukkan nama obyek"
+                                        aria-label="Nama Obyek Penilaian" aria-describedby="pra-input-0"
+                                        id="hh-input-nama" autocomplete="off">
+                                </div>
+                                <div class="col w-100 position-relative mb-4">
+                                    <div id="hh-input-list-nama" class="input-list" list-data-to-filter="staffData"
+                                        elemID-to-paste="hh-input-nama" tambah-list-function="TambahStaf()">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="h6 flex-grow-0 mb-2 bg-ijo rounded p-2 text-center"
+                                style="color: rgb(95, 141, 73)">
+                                <i class="bi bi-people-fill"></i>
+                            </div>
+                            <div class="container-fluid text-center mb-4 p-0 gap-2 d-flex flex-column" role="group"
+                                aria-label="Basic radio toggle button group">
+                                <div class="container-fluid m-0 p-0 row gap-2">
+                                    <input type="radio" class="radioBtn input-hh-btn onchange-check" value="Dokter"
+                                        name="input-hh-kelompok" id="input-hh-kelompok-dokter" autocomplete="off">
+                                    <label class="btn col btn-outline-primary py-1"
+                                        for="input-hh-kelompok-dokter">Dokter</label>
+                                    <input type="radio" class="radioBtn input-hh-btn onchange-check"
+                                        value="Perawat Bidan" name="input-hh-kelompok" id="input-hh-kelompok-perawat"
+                                        autocomplete="off">
+                                    <label class="btn col btn-outline-primary py-1"
+                                        for="input-hh-kelompok-perawat">Perawat Bidan</label>
+                                </div>
+                                <div class="container-fluid m-0 p-0 row gap-2">
+                                    <input type="radio" class="radioBtn input-hh-btn onchange-check"
+                                        value="Magang Siswa" name="input-hh-kelompok" id="input-hh-kelompok-siswa"
+                                        autocomplete="off">
+                                    <label class="btn col btn-outline-primary py-1" for="input-hh-kelompok-siswa">Magang
+                                        Siswa</label>
+                                    <input type="radio" class="radioBtn input-hh-btn onchange-check" value="Lain-lain"
+                                        name="input-hh-kelompok" id="input-hh-kelompok-lain" autocomplete="off">
+                                    <label class="btn col btn-outline-primary py-1"
+                                        for="input-hh-kelompok-lain">Lain-lain</label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="input-group border-outline-ijo border-2">
+                                    <span class="input-group-text bg-ijo border-outline-ijo" id="pra-input-1"><i
+                                            class="bi bi-house-fill"></i></span>
+                                    <input type="text"
+                                        class="form-control border-outline-ijo hh-input input-with-list onchange-check shadow-ijo-focus"
+                                        list-name="hh-input-list-unit" placeholder="Masukkan nama unit"
+                                        aria-label="Nama Unit Penilaian" aria-describedby="pra-input-1"
+                                        id="hh-input-unit" autocomplete="off">
+                                </div>
+                                <div class="col w-100 position-relative mb-4">
+                                    <div id="hh-input-list-unit" class="input-list" list-data-to-filter="unitData"
+                                        elemID-to-paste="hh-input-unit" tambah-list-function="TambahUnit()">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="input-group border-outline-ijo border-2 mb-4">
+                                    <span class="input-group-text bg-ijo border-outline-ijo"><i
+                                            class="bi bi-calendar2-month-fill"></i></span>
+                                    <select class="form-select onchange-check shadow-ijo-focus border-outline-ijo"
+                                        id="hh-input-bulan">
+                                        <option selected>Pilih Bulan</option>
+                                        <option value="1">Januari</option>
+                                        <option value="2">Februari</option>
+                                        <option value="3">Maret</option>
+                                        <option value="4">April</option>
+                                        <option value="5">Mei</option>
+                                        <option value="6">Juni</option>
+                                        <option value="7">Juli</option>
+                                        <option value="8">Agustus</option>
+                                        <option value="9">September</option>
+                                        <option value="10">Oktober</option>
+                                        <option value="11">November</option>
+                                        <option value="12">Desember</option>
+                                    </select>
+                                    <span class="input-group-text bg-ijo border-outline-ijo"><i
+                                            class="bi bi-calendar2-date"></i></span>
+                                    <input type="number"
+                                        class="form-control onchange-check shadow-ijo-focus border-outline-ijo"
+                                        min="2023" placeholder="Tahun" id="hh-input-tahun">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="p-3 flex-shrink-0"
+                        style="display: block; scroll-snap-align: start; min-height: calc(100vh - 45px)"
+                        id="hh-score-container">
+                        <div id="hh-score-box mt-3"
+                            class="mx-auto flex-grow-1 p-0 bg-white shadow overflow-hidden d-flex flex-column"
+                            style="min-width: 300px; max-height: calc(100vh - 40px)">
+                            <div class="position-relative float-end">
+                                <button type="button" class="text-white position-absolute btn border"
+                                    onclick="document.querySelectorAll('.hh-moment').forEach((p)=>p.checked = false)"
+                                    style="right:15px; top:10px"><i class="bi bi-arrow-repeat"></i></button>
+                            </div>
+                            <div class="col py-4 flex-grow-0 h6 fw-bold moment-title bg-ijo text-center">
+                                Nilai Moment
+                            </div>
+                            <div class="col px-4 small flex-grow-1 d-flex flex-column">
+                                <div class="col mb-1 d-flex flex-column moment-box">
+                                    <p class="small ps-2 mb-0 fst-italic">Sebelum kontak dengan pasien</p>
+                                    <div class="border rounded d-flex overflow-hidden bg-ijo">
+                                        <div class="fs-4 px-4 py-1">1</div>
+                                        <input type="radio" class="radioBtn input-hh-btn hh-moment moment-1"
+                                            name="input-hh-mo1" id="input-hh-mo1-true" value="1" autocomplete="off">
+                                        <label class="col bg-white fs-4" for="input-hh-mo1-true">Y</label>
+                                        <input type="radio" class="radioBtn input-hh-btn hh-moment moment-1"
+                                            name="input-hh-mo1" id="input-hh-mo1-false" value="0" autocomplete="off">
+                                        <label class="col bg-white fs-4" for="input-hh-mo1-false">N</label>
+                                        <button class="border-0 px-3"
+                                            onclick="document.querySelectorAll('.input-hh-btn.moment-1').forEach((p)=>p.checked = false)"><i
+                                                class="bi bi-x-circle"></i></button>
+                                    </div>
+                                </div>
+                                <div class="col mb-1 d-flex flex-column moment-box">
+                                    <p class="small ps-2 mb-0 fst-italic">Sebelum melakukan tindakan aseptik</p>
+                                    <div class="border rounded d-flex overflow-hidden bg-ijo">
+                                        <div class="fs-4 px-4 py-1">
+                                            2
+                                        </div>
+                                        <input type="radio" class="radioBtn input-hh-btn hh-moment moment-2"
+                                            name="input-hh-mo2" id="input-hh-mo2-true" value="1" autocomplete="off">
+                                        <label class="col bg-white fs-4" for="input-hh-mo2-true">Y</label>
+                                        <input type="radio" class="radioBtn input-hh-btn hh-moment moment-2"
+                                            name="input-hh-mo2" id="input-hh-mo2-false" value="0" autocomplete="off">
+                                        <label class="col bg-white fs-4" for="input-hh-mo2-false">N</label>
+                                        <button class="border-0 px-3"
+                                            onclick="document.querySelectorAll('.input-hh-btn.moment-2').forEach((p)=>p.checked = false)"><i
+                                                class="bi bi-x-circle"></i></button>
+                                    </div>
+                                </div>
+                                <div class="col mb-1 d-flex flex-column moment-box">
+                                    <p class="small ps-2 mb-0 fst-italic">Setelah terkena cairan tubuh pasien</p>
+                                    <div class="border rounded d-flex overflow-hidden bg-ijo">
+                                        <div class="fs-4 px-4 py-1">
+                                            3
+                                        </div>
+                                        <input type="radio" class="radioBtn input-hh-btn hh-moment moment-3"
+                                            name="input-hh-mo3" id="input-hh-mo3-true" value="1" autocomplete="off">
+                                        <label class="col bg-white fs-4" for="input-hh-mo3-true">Y</label>
+                                        <input type="radio" class="radioBtn input-hh-btn hh-moment moment-3"
+                                            name="input-hh-mo3" id="input-hh-mo3-false" value="0" autocomplete="off">
+                                        <label class="col bg-white fs-4" for="input-hh-mo3-false">N</label>
+                                        <button class="border-0 px-3"
+                                            onclick="document.querySelectorAll('.input-hh-btn.moment-3').forEach((p)=>p.checked = false)"><i
+                                                class="bi bi-x-circle"></i></button>
+                                    </div>
+                                </div>
+                                <div class="col mb-1 d-flex flex-column moment-box">
+                                    <p class="small ps-2 mb-0 fst-italic">Setelah kontak dengan pasien</p>
+                                    <div class="border rounded d-flex overflow-hidden bg-ijo">
+                                        <div class="fs-4 px-4 py-1">
+                                            4
+                                        </div>
+                                        <input type="radio" class="radioBtn input-hh-btn hh-moment moment-4"
+                                            name="input-hh-mo4" id="input-hh-mo4-true" value="1" autocomplete="off">
+                                        <label class="col bg-white fs-4" for="input-hh-mo4-true">Y</label>
+                                        <input type="radio" class="radioBtn input-hh-btn hh-moment moment-4"
+                                            name="input-hh-mo4" id="input-hh-mo4-false" value="0" autocomplete="off">
+                                        <label class="col bg-white fs-4" for="input-hh-mo4-false">N</label>
+                                        <button class="border-0 px-3"
+                                            onclick="document.querySelectorAll('.input-hh-btn.moment-4').forEach((p)=>p.checked = false)"><i
+                                                class="bi bi-x-circle"></i></button>
+                                    </div>
+                                </div>
+                                <div class="col mb-1 d-flex flex-column moment-box">
+                                    <p class="small ps-2 mb-0 fst-italic">Setelah kontak dengan lingkungan sekitar luar
+                                        pasien</p>
+                                    <div class="border rounded d-flex overflow-hidden bg-ijo">
+
+                                        <div class="fs-4 px-4 py-1">
+                                            5
+                                        </div>
+                                        <input type="radio" class="radioBtn input-hh-btn hh-moment moment-5"
+                                            name="input-hh-mo5" id="input-hh-mo5-true" value="1" autocomplete="off">
+                                        <label class="col bg-white fs-4" for="input-hh-mo5-true">Y</label>
+                                        <input type="radio" class="radioBtn input-hh-btn hh-moment moment-5"
+                                            name="input-hh-mo5" id="input-hh-mo5-false" value="0" autocomplete="off">
+                                        <label class="col bg-white fs-4" for="input-hh-mo5-false">N</label>
+                                        <button class="border-0 px-3"
+                                            onclick="document.querySelectorAll('.input-hh-btn.moment-5').forEach((p)=>p.checked = false)"><i
+                                                class="bi bi-x-circle"></i></button>
+                                    </div>
+                                </div>
+                                <div class="col d-flex mt-3 mb-1 justify-content-start align-items-center">
+                                    <button class="btn bg-danger text-white py-2 px-5" style="margin-bottom: 50px;">
+                                        Simpan
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column px-4 pb-5 flex-grow-1 overflow-hidden bg-success-subtle"
+                        style="max-height: calc(100vh - 40px); scroll-snap-align: start" id="hh-table-container-parent">
+                        <div class="flex-grow-0 text-center h6 fw-bold text-ijo my-4">Daftar Input</div>
+                        <div class="p-0 position-relative w-100">
+                            <input type="checkbox" class="radioBtn" id="hh-table-filter-show-btn" autocomplete="off"
+                                data-bs-toggle="collapse" data-bs-target="#hh-table-filter-container">
+                            <label
+                                class="border-outline-ijo border border-1 rounded-top-3 position-absolute py-1 px-4 float-start"
+                                for="hh-table-filter-show-btn" style="bottom:0px;">
+                                <div class="icon-hh-filter bi bi-caret-up-fill fs-6"></div>
+                            </label>
+                        </div>
+                        <div class="container-fluid collapse p m-0 text-center border border-1 border-outline-ijo bg-white pt-0 pb-2"
+                            id="hh-table-filter-container">
+                            <div class="my-1">Filter</div>
+                            <div class="d-sm-flex flex-row gap-2">
+                                <div class="col input-group mb-2">
+                                    <span class="input-group-text bg-ijo border-outline-ijo" id="basic-addon1"><i
+                                            class="bi bi-people-fill"></i></span>
+                                    <select class="form-select filter-hh-option shadow-ijo-focus"
+                                        id="filter-hh-option-kelompok" onchange="hhTableGroupShow(0); HHFilterSort()"
+                                        filter-hh-type="group">
+                                        <option selected value="all">Semua Grup</option>
+                                        <option value="Dokter">Dokter</option>
+                                        <option value="Perawat Bidan">Perawat Bidan</option>
+                                        <option value="Magang Siswa">Magang Siswa</option>
+                                        <option value="Lain-lain">Lain-lain</option>
+                                    </select>
+                                </div>
+                                <div class="col mb-2">
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-ijo border-outline-ijo"><i
+                                                class="bi bi-house-fill"></i></span>
+                                        <input type="text" filter-hh-type="unit"
+                                            class="form-control input-with-list shadow-ijo-focus no-list-add hh-filter-list-input"
+                                            onchange="hhTableGroupShow(0); HHFilterSort()"
+                                            list-name="hh-filter-list-unit" placeholder="Semua unit"
+                                            aria-label="Nama Unit Penilaian" aria-describedby="pra-input-1"
+                                            id="hh-filter-unit" autocomplete="off">
+                                    </div>
+                                    <div class="col w-100 position-relative">
+                                        <div id="hh-filter-list-unit" class="input-list" list-data-to-filter="unitData"
+                                            elemID-to-paste="hh-filter-unit" tambah-list-function="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-sm-flex gap-2">
+                                <div class="col mb-2">
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-ijo border-outline-ijo"><i
+                                                class="bi bi-calendar2-month-fill"></i></span>
+                                        <select class="form-select filter-hh-option shadow-ijo-focus"
+                                            id="filter-hh-option-bulan" onchange="hhTableGroupShow(0);HHFilterSort()"
+                                            filter-hh-type="monthyear">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col mb-2">
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-ijo border-outline-ijo"><i
+                                                class="bi bi-person-fill-down"></i></span>
+                                        <input type="text"
+                                            class="form-control input-with-list shadow-ijo-focus no-list-add hh-filter-list-input"
+                                            list-name="hh-filter-list-observer" placeholder="Semua Observer"
+                                            filter-hh-type="observer" onchange="hhTableGroupShow(0); HHFilterSort()"
+                                            aria-label="Filter Observer" aria-describedby="pra-input-1"
+                                            id="hh-filter-observer" autocomplete="off">
+                                    </div>
+                                    <div class="col w-100 position-relative">
+                                        <div id="hh-filter-list-observer" class="input-list"
+                                            list-data-to-filter="uniqueObserver" elemID-to-paste="hh-filter-observer"
+                                            tambah-list-function="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-100 hh-table-container">
+                            <table class="table small hh-table table-bordered">
+                                <thead class="small bg-ijo text-center">
+                                    <tr>
+                                        <th scope="col" class="HHSortBtn align-items-center"
+                                            onclick="HHSortTableHeader(this); HHFilterSort()" hh-sort-state="down"
+                                            hh-sort-type="time">
+                                            <div class="">Time</div>
+                                            <div>
+                                                <i class="bi bi-caret-up"></i>
+                                                <i class="bi bi-caret-down-fill"></i>
+                                            </div>
+                                        </th>
+                                        <th scope="col" class="align-middle">Obersever</th>
+                                        <th scope="col" class="align-middle">Nama</th>
+                                        <th scope="col" class="align-middle">Unit</th>
+                                        <th scope="col" class="align-middle">Kelompok</th>
+                                        <th scope="col" class="align-middle">Bulan</th>
+                                        <th scope="col" class="HHSortBtn align-items-center"
+                                            onclick="HHSortTableHeader(this);HHFilterSort()" hh-sort-type="moment"
+                                            hh-sort-state="off">
+                                            <div class="">Total</div>
+                                            <div>
+                                                <i class="bi bi-caret-up"></i>
+                                                <i class="bi bi-caret-down"></i>
+                                            </div>
+                                        </th>
+                                        <th scope="col" class="align-middle">1</th>
+                                        <th scope="col" class="align-middle">2</th>
+                                        <th scope="col" class="align-middle">3</th>
+                                        <th scope="col" class="align-middle">4</th>
+                                        <th scope="col" class="align-middle">5</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="small" id="hh-table-body">
+                                </tbody>
+                            </table>
+                        </div>
+                        <nav aria-label="Page navigation example" class="mt-3 mb-5 mx-auto flex-grow-0">
+                            <ul class="pagination justify-content-end" id="hhGroupingBtns">
+                                <li class="page-item hh-grouping-btn-arrow disabled page-item-btn">
+                                    <div class="page-link" onclick="hhTableGroupShow(0); HHFilterSort()">&#60;&#60;
+                                    </div>
+                                </li>
+                                <li class="page-item hh-grouping-btn-num active">
+                                    <div class="page-link" onclick="hhTableGroupShow(0); HHFilterSort()">1</div>
+                                </li>
+                                <li class="page-item hh-grouping-btn-num" style="color: burlywood !important">
+                                    <div class="page-link" onclick="hhTableGroupShow(10); HHFilterSort()">2</div>
+                                </li>
+                                <li class="page-item hh-grouping-btn-num">
+                                    <div class="page-link" onclick="hhTableGroupShow(20); HHFilterSort()">3</div>
+                                </li>
+                                <li class="page-item hh-grouping-btn-num">
+                                    <div class="page-link" onclick="hhTableGroupShow(30); HHFilterSort()">4</div>
+                                </li>
+                                <li class="page-item hh-grouping-btn-num">
+                                    <div class="page-link" onclick="hhTableGroupShow(40); HHFilterSort()">5</div>
+                                </li>
+                                <li class="page-item hh-grouping-btn-arrow page-item-btn">
+                                    <div class="page-link" onclick="hhTableGroupShow(0); HHFilterSort()">&#62;&#62;
+                                    </div>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div nav-group="menu-nav-pages" style="display: none;" id="menu-nav-page-apd">apd</div>
+                <div nav-group="menu-nav-pages" style="display: none;" id="menu-nav-page-spv">spv</div>
+                <div nav-group="menu-nav-pages" style="display: none;" id="menu-nav-page-res">res</div>
+                <div nav-group="menu-nav-pages" style="display: none;" id="menu-nav-page-edit">edit</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+        integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+        crossorigin="anonymous"></script>
+    <script>
+        const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+        const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,193 @@
+.disabled>.page-link {
+    color: rgb(196, 196, 196);
+  }
+  #hhGroupingBtns>li>.page-link {
+    cursor: pointer;
+  }
+  .hh-grouping-btn-arrow{
+    color: white
+  }
+  .disabled > .hh-grouping-btn-arrow{
+    color: rgb(118, 161, 98)
+  }
+  [hh-sort-state="up"] .bi-caret-up-fill{
+    color: yellow
+  }
+  [hh-sort-state="down"] .bi-caret-down-fill{
+    color: yellow
+  }
+  #hh-table-filter-show-btn + label {
+    border: 1.5px solid rgba(95, 141, 73, 1) !important;
+    background-color: rgba(95, 141, 73, 1);
+    color: white;
+  }
+  #hh-table-filter-show-btn:checked + label {
+    color: yellow  
+  }
+  #hh-table-filter-show-btn + label > div{
+    transition: transform 1s;
+    transform: rotate(0deg);
+  }
+  #hh-table-filter-show-btn:checked + label > div{
+    /* animation: rotateThis 1s; */
+    transform: rotate(180deg);
+    transition: transform 1s; 
+  }
+  @keyframes rotateThis {
+    100% {transform: rotate(180deg);}
+  }
+  .hh-table-container{
+    overflow-x: scroll;
+  }
+  .hh-table {
+    background-color: white;
+    position: relative;
+  }
+  
+  .hh-table thead tr:nth-child(1) th {
+    background: rgba(95, 141, 73, 1);
+    position: sticky;
+    top: 0;
+  }
+  /* #hh-score-box {
+    min-height: calc(100vh - 60px);
+  } */
+  .moment-box .radioBtn + label {
+    background: rgba(209, 220, 204, 0.3);
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  .moment-box .radioBtn:checked+label {
+    background: rgba(95, 141, 73, 1) !important;
+    color: white;
+  }
+  .radioBtn{
+    position: absolute;
+    top: 0;
+    left: -99999px;
+  }
+  [name="input-hh-kelompok"] + label{
+    background: rgba(209, 220, 204, 0.3);
+    border: solid 1.5px rgba(95, 141, 73, 1);
+    color: rgba(95, 141, 73, 1);
+    padding: auto;
+    font-size: 0.9rem;
+    vertical-align: middle !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  [name="input-hh-kelompok"]:checked + label{
+    color: white;
+    background: rgba(95, 141, 73,1) !important;
+    border: solid 1.5px rgba(95, 141, 73, 1) !important;
+    vertical-align: middle !important;
+  }
+  [name="input-hh-kelompok"] + label:hover{
+    background: rgba(95, 141, 73, 1) !important;
+    border: solid 1.5px rgba(95, 141, 73, 0.8) !important;
+    vertical-align: middle !important;
+    color: white !important;
+  }
+  .input-list {
+    /* overflow-y: hidden; */
+    /* max-height: 200px; */
+    background: white;   
+    width: 100%;
+    position: absolute;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    z-index: 9;
+  }
+  .input-list ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    border: 1px solid grey
+  }
+  .input-list > ul:nth-child(2) {
+    max-height: 200px;
+    overflow-y: auto;
+  }
+  .input-list > ul > li {
+    padding: 10px 20px;
+    border: 1px solid grey;
+  }
+  .shadow-ijo-focus:focus{
+    box-shadow: 0 0 18px rgba(95, 141, 73, 0.8) !important;
+  }
+  .listCurrActive {
+    border: 2px solid blue !important;
+  }
+  .tambah-list{
+    color: white;
+    background: rgba(95, 141, 73, 0.8);
+  }
+  .tambah-list > span{
+    color: yellow
+  }
+  .nav-link{
+    cursor: pointer;
+    color: white;
+  }
+  .nav-link.active{
+    font-weight: bold !important;
+    color: rgba(95, 141, 73, 1) !important; 
+  }
+  body, html {
+      min-height: 100vh;
+      max-width: 100%; 
+      margin: 0;
+      padding: 0;
+      font-family: 'Noto Sans', sans-serif;
+      overflow: auto;
+  }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  .bg-ijo{background: rgba(95, 141, 73, 1) !important; color:white !important}
+  .text-ijo{color:rgb(95, 141, 73) !important;}
+  .border-outline-ijo {border-color: rgb(95, 141, 73) !important;}
+  .loader-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: rgb(95, 141, 73);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(199, 234, 228, 0.9);
+    z-index: 9999;
+  }
+  ::-webkit-scrollbar
+      {
+        width: 10px;  /* for vertical scrollbars */
+        height: 10px; /* for horizontal scrollbars */
+      }
+      
+      ::-webkit-scrollbar-track
+      {
+        /* background: palevioletred; */
+        /* background: rgba(0, 0, 0, 0.05); */
+        background-color: transparent
+      }
+      
+      ::-webkit-scrollbar-thumb
+      { 
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+      }
+  
+  @media (max-width: 768px) {
+    #hh-table-container-parent {
+      max-height: 100vh;
+    }
+  }
